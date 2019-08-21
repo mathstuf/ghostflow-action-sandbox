@@ -18,3 +18,5 @@ RUN rm glibc-2.30-r0.apk glibc-bin-2.30-r0.apk
 
 # Install ghostflow-cli from the builder.
 COPY --from=builder /usr/local/bin/ghostflow-cli /usr/local/bin/ghostflow-cli
+
+ENTRYPOINT ["/usr/local/bin/ghostflow-cli"]
