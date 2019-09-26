@@ -14,6 +14,11 @@ jobs:
       uses: actions/checkout@master
     - name: Run ghostflow
       run: /usr/local/bin/ghostflow-cli --ci github-action check run
+      # Commented out because github rebuilds the container on each invokation
+      # otherwise.
+      # uses: mathstuf/ghostflow-action-sandbox@master
+      # with:
+      #   args: --ci github-action check run
       env:
         RUST_BACKTRACE: full
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
