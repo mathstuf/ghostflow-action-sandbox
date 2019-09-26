@@ -13,7 +13,7 @@ jobs:
     - name: Checkout
       uses: actions/checkout@master
     - name: Run ghostflow
-      run: /usr/local/bin/ghostflow-cli --ci github-action check run topic --target $TARGET $HEAD
+      run: /usr/local/bin/ghostflow-cli --ci github-action check run topic
       # Commented out because github rebuilds the container on each invokation
       # otherwise.
       # uses: mathstuf/ghostflow-action-sandbox@master
@@ -22,5 +22,3 @@ jobs:
       env:
         RUST_BACKTRACE: full
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        TARGET: ${{ github.base_ref }}
-        HEAD: ${{ github.head_ref }}
