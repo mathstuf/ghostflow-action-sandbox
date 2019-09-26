@@ -1,0 +1,9 @@
+name: ghostflow
+author: Ben Boeckel
+description: "Run ghostflow actions"
+runs:
+  using: docker
+  image: image/Dockerfile
+branding:
+  icon: git-pull-request
+  color: gray-dark
