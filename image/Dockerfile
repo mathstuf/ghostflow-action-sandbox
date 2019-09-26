@@ -1,7 +1,7 @@
 FROM rustlang/rust:nightly AS builder
 
 # Install the ghostflow-cli tool.
-RUN cargo +nightly install --root /usr/local --git https://gitlab.kitware.com/ben.boeckel/rust-ghostflow.git --branch ghostflow-cli
+RUN cargo +nightly install --root /usr/local --git https://gitlab.kitware.com/ben.boeckel/rust-ghostflow.git --rev bf806e8d303235aa75b1abd698d74b77c835dc8a
 
 FROM alpine:3.10 AS runner
 
@@ -18,3 +18,8 @@ RUN rm glibc-2.30-r0.apk glibc-bin-2.30-r0.apk
 
 # Install ghostflow-cli from the builder.
 COPY --from=builder /usr/local/bin/ghostflow-cli /usr/local/bin/ghostflow-cli
+
+RUN git config --global user.name "Ghostflow Action"
+RUN git config --global user.email "ghostflow-github-action@invalid"
+
+ENTRYPOINT ["/usr/local/bin/ghostflow-cli"]
