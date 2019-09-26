@@ -13,6 +13,7 @@ jobs:
     - name: Checkout
       uses: actions/checkout@master
     - name: Run ghostflow
-      run: /usr/local/bin/ghostflow-cli --repo "$GITHUB_WORKSPACE" check run
+      run: /usr/local/bin/ghostflow-cli --ci github-action check run
       env:
         RUST_BACKTRACE: full
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
