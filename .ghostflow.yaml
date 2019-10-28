@@ -1,0 +1,34 @@
+checks:
+    - kind: valid_ghostflow_config
+    - kind: check_end_of_line
+    - kind: check_executable_permissions
+      config:
+        extensions:
+            - .bat
+            - .cmd
+            - .exe
+            - .com
+    - kind: check_size
+    - kind: check_whitespace
+    - kind: commit_subject
+    - kind: invalid_paths
+    - kind: invalid_utf8
+    - kind: lfs_pointer
+    - kind: reject_conflict_paths
+    - kind: reject_separate_root
+    - kind: reject_symlinks
+    - kind: submodule_available
+      config:
+        require_first_parent: true
+    - kind: submodule_rewind
+    - kind: submodule_watch
+      config:
+        reject_additions: true
+        reject_removals: true
+    - kind: valid_name
+      config:
+        full_name_policy: preferred
+    - kind: changelog/topic
+      config:
+        style: file
+        path: CHANGELOG.md
