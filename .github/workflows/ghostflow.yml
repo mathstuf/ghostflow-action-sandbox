@@ -2,7 +2,12 @@ name: ghostflow
 
 on:
   #- push
-  - pull_request
+  pull_request:
+    types:
+      - edited
+      - opened
+      - reopened
+      - synchronize
 
 jobs:
   ghostflow:
