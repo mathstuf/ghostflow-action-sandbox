@@ -18,7 +18,7 @@ jobs:
     - name: Checkout
       uses: actions/checkout@master
       with:
-        ref: ${{ github.sha }}^2
+        ref: "${{ github.sha }}^2"
     - name: Run ghostflow
       run: /usr/local/bin/ghostflow-cli -dddd --ci github-action check run topic
       # Commented out because github rebuilds the container on each invokation
