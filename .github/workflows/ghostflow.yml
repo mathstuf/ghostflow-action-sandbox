@@ -13,7 +13,7 @@ jobs:
     - name: Checkout
       uses: actions/checkout@master
     - name: Run ghostflow
-      run: /usr/local/bin/ghostflow-cli -ddd --ci github-action check run topic
+      run: /usr/local/bin/ghostflow-cli -dddd --ci github-action check run topic
       # Commented out because github rebuilds the container on each invokation
       # otherwise.
       # uses: mathstuf/ghostflow-action-sandbox@master
