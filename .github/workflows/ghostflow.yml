@@ -1,0 +1,24 @@
+name: ghostflow
+
+on:
+  #- push
+  - pull_request
+
+jobs:
+  ghostflow:
+    name: ghostflow
+    runs-on: ubuntu-latest
+    container: benboeckel/ghostflow-github-action:wip
+    steps:
+    - name: Checkout
+      uses: actions/checkout@master
+    - name: Run ghostflow
+      run: /usr/local/bin/ghostflow-cli -ddd --ci github-action check run topic
+      # Commented out because github rebuilds the container on each invokation
+      # otherwise.
+      # uses: mathstuf/ghostflow-action-sandbox@master
+      # with:
+      #   args: --ci github-action check run
+      env:
+        RUST_BACKTRACE: full
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
