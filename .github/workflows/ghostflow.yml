@@ -2,7 +2,12 @@ name: ghostflow
 
 on:
   #- push
-  - pull_request
+  pull_request:
+    types:
+      - edited
+      - opened
+      - reopened
+      - synchronize
 
 jobs:
   ghostflow:
@@ -12,8 +17,10 @@ jobs:
     steps:
     - name: Checkout
       uses: actions/checkout@master
+      with:
+        ref: ${{ github.head_ref }}
     - name: Run ghostflow
-      run: /usr/local/bin/ghostflow-cli -ddd --ci github-action check run topic
+      run: /usr/local/bin/ghostflow-cli -dddd --ci github-action check run topic
       # Commented out because github rebuilds the container on each invokation
       # otherwise.
       # uses: mathstuf/ghostflow-action-sandbox@master
