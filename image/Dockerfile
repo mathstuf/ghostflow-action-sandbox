@@ -1,7 +1,7 @@
 FROM rustlang/rust:nightly AS builder
 
 # Install the ghostflow-cli tool.
-RUN cargo +nightly install --root /usr/local --git https://gitlab.kitware.com/ben.boeckel/rust-ghostflow.git --rev 2e39780691ff37e9fb8c19c4749bb44109e8080d
+RUN cargo +nightly install --root /usr/local --git https://gitlab.kitware.com/ben.boeckel/rust-ghostflow.git --rev add909721f7557655dbab1ebde2578242dc31db8
 
 FROM alpine:3.10 AS runner
 
