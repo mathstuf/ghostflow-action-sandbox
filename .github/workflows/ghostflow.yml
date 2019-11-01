@@ -17,10 +17,8 @@ jobs:
     steps:
     - name: Checkout
       uses: actions/checkout@master
-    - name: Checkout PR HEAD
-      # This is a hack. Doesn't work for submodule-using projects.
-      # https://github.com/actions/checkout/issues/61
-      run: git checkout HEAD^2
+      with:
+        ref: ${{ github.event.after }}
     - name: Run ghostflow
       run: /usr/local/bin/ghostflow-cli -dddd --ci github-action check run topic
       # Commented out because github rebuilds the container on each invokation
